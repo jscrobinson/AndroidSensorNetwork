@@ -4,10 +4,10 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
-
+    <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="17" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <supports-screens android:largeScreens="true"/>
+    
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -18,10 +18,33 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name="com.example.sensornetwork.MyService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <activity
+            android:name="com.example.sensornetwork.Settings"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="com.example.sensornetwork.Broadcast"
+            android:label="@string/title_activity_broadcast"
+            android:parentActivityName="com.example.sensornetwork.Settings" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.sensornetwork.Settings" />
+        </activity>
+
+        <activity android:name=".MainActivity" android:label="@string/app_name">
+            
+        </activity>
+
     </application>
 
 </manifest>
